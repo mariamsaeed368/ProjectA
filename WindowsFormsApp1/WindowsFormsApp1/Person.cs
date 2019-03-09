@@ -197,5 +197,24 @@ namespace WindowsFormsApp1
             g.Show();
             this.Hide();
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Project p = new Project();
+            p.Show();
+            this.Hide();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Advisor a = new Advisor();
+            a.Show();
+            this.Hide();
+        }
     }
 }

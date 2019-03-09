@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
-        public Form1()
+        public Login()
         {
             InitializeComponent();
         }
@@ -25,6 +25,10 @@ namespace WindowsFormsApp1
                 Person b = new Person();
                 b.Show();
                 this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Please Enter valid Username or Password");
             }
         }
 
