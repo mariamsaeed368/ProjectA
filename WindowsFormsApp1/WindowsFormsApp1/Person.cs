@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class Person : Form
     {
-        int gender;
+        string gender;
         SqlConnection conn = new SqlConnection(@"Data Source=SONY\SQLEXPRESS;Initial Catalog=ProjectA;Integrated Security=True");
         public Person()
         {
@@ -24,6 +24,25 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             conn.Open();
+            SqlCommand comd = new SqlCommand("Select Id from Lookup where Lookup.Value='" + gender + "'", conn);
+            int g = (int)comd.ExecuteScalar();
+            SqlCommand cmd = new SqlCommand("Insert into Person(FirstName, LastName, Contact, Email, DateOfBirth, Gender) values('" + textBox1.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "', '" + textBox5.Text + "','" + g + "')", conn);
+            cmd.ExecuteNonQuery();
+            SqlCommand cmd3 = new SqlCommand("Select IDENT_CURRENT('Person')", conn);
+            //  cmd3.ExecuteNonQuery();
+            int modified = Convert.ToInt32(cmd3.ExecuteScalar());
+            SqlCommand cmd1 = new SqlCommand("Insert into Student(Id,RegistrationNo) values('" + modified + "','" + textBox7.Text + "')", conn);
+            MessageBox.Show("Data saved");
+            cmd1.ExecuteNonQuery();
+            conn.Close();
+            display_data();
+            textBox1.Text = " ";
+            textBox2.Text = " ";
+            textBox3.Text = " ";
+            textBox4.Text = " ";
+            textBox5.Text = " ";
+            textBox7.Text = " ";
+          /*  conn.Open();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "Insert into Person(FirstName,LastName,Contact,Email,DateOfBirth,Gender) OUTPUT INSERTED.ID values('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + gender + "')";
@@ -67,16 +86,20 @@ namespace WindowsFormsApp1
                  MessageBox.Show(es.Message);
              }*/
         }
-
+         private void Person_Load(object sender, EventArgs e)
+        {
+            display_data();
+        }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            gender = 2;
+            gender = "Female";
         }
         public void display_data()
         {
+            conn.Open();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "Select * from Person";
+            cmd.CommandText = "Select Person.*, Student.RegistrationNo from Person JOIN Student on Person.Id = Student.Id";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -86,14 +109,8 @@ namespace WindowsFormsApp1
         }
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            gender = 1;
+            gender = "Male";
         }
-
-        private void Person_Load(object sender, EventArgs e)
-        {
-            display_data();
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow.Cells["Id"].Value != DBNull.Value)
@@ -107,11 +124,16 @@ namespace WindowsFormsApp1
                         sqlCon.Open();
                         SqlCommand cmd = new SqlCommand("EmployeeDeleteByID", sqlCon);
                         cmd.CommandType = CommandType.Text;
+                        SqlCommand cmd2 = new SqlCommand("EmployeeDeleteByID", sqlCon);
+                        cmd2.CommandType = CommandType.Text;
                         int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
                         cmd.CommandText = "Delete from Person where Id='" + rowID + "'";
+                        cmd2.CommandText = "Delete from Student where Id='" + rowID + "'";
+                        cmd2.ExecuteNonQuery();
                         cmd.ExecuteNonQuery();
                         display_data();
                         MessageBox.Show("Deleted");
+                        sqlCon.Close();
                     }
                 }
             }
@@ -121,8 +143,10 @@ namespace WindowsFormsApp1
         {
             if (dataGridView1.CurrentRow != null)
             {
+                conn.Open();
                 DataGridViewRow dgvRow = dataGridView1.CurrentRow;
                 int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);
+                string regno = dgvRow.Cells["RegistrationNo"].Value == DBNull.Value ? "" : dgvRow.Cells["RegistrationNo"].Value.ToString();
                 string fname = dgvRow.Cells["FirstName"].Value == DBNull.Value ? "" : dgvRow.Cells["FirstName"].Value.ToString();
                 string lname = dgvRow.Cells["LastName"].Value == DBNull.Value ? "" : dgvRow.Cells["LastName"].Value.ToString();
                 string contact = dgvRow.Cells["Contact"].Value == DBNull.Value ? "" : dgvRow.Cells["Contact"].Value.ToString();
@@ -130,9 +154,12 @@ namespace WindowsFormsApp1
                 DateTime dob = Convert.ToDateTime(dgvRow.Cells["DateOfBirth"].Value == DBNull.Value ? "" : dgvRow.Cells["DateOfBirth"].Value);
                 int gender = Convert.ToInt32(dgvRow.Cells["Gender"].Value == DBNull.Value ? "" : dgvRow.Cells["Gender"].Value);
                 SqlCommand sqlCmd = new SqlCommand("Update Person set FirstName='" + fname + "' ,LastName='" + lname + "' ,Contact='" + contact + "' ,Email='" + email + "', DateOfBirth='" + dob + "' ,Gender='" + gender + "' where Id='" + id + "'", conn);
+                SqlCommand sqlCmd2 = new SqlCommand("Update Student set RegistrationNo='" + regno + "' where Id='" + id + "'", conn);
+                sqlCmd2.ExecuteNonQuery();
                 sqlCmd.ExecuteNonQuery();
-                display_data();
                 MessageBox.Show("Updated");
+                conn.Close();
+                display_data();
 
             }
         }
@@ -144,6 +171,7 @@ namespace WindowsFormsApp1
                 conn.Open();
                 DataGridViewRow dgvRow = dataGridView1.CurrentRow;
                 int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);
+                string regno = dgvRow.Cells["RegistrationNo"].Value == DBNull.Value ? "" : dgvRow.Cells["RegistrationNo"].Value.ToString();
                 string fname = dgvRow.Cells["FirstName"].Value == DBNull.Value ? "" : dgvRow.Cells["FirstName"].Value.ToString();
                 string lname = dgvRow.Cells["LastName"].Value == DBNull.Value ? "" : dgvRow.Cells["LastName"].Value.ToString();
                 string contact = dgvRow.Cells["Contact"].Value == DBNull.Value ? "" : dgvRow.Cells["Contact"].Value.ToString();
@@ -151,11 +179,23 @@ namespace WindowsFormsApp1
                 DateTime dob = Convert.ToDateTime(dgvRow.Cells["DateOfBirth"].Value == DBNull.Value ? "" : dgvRow.Cells["DateOfBirth"].Value);
                 int gender = Convert.ToInt32(dgvRow.Cells["Gender"].Value == DBNull.Value ? "" : dgvRow.Cells["Gender"].Value);
                 SqlCommand sqlCmd = new SqlCommand("Update Person set FirstName='" + fname + "' ,LastName='" + lname + "' ,Contact='" + contact + "' ,Email='" + email + "', DateOfBirth='" + dob + "' ,Gender='" + gender + "' where Id='" + id + "'", conn);
+                SqlCommand sqlCmd2 = new SqlCommand("Update Student set RegistrationNo='" + regno + "' where Id='" + id + "'", conn);
+                sqlCmd2.ExecuteNonQuery();
                 sqlCmd.ExecuteNonQuery();
-                display_data();
                 MessageBox.Show("Updated");
+                conn.Close();
+                display_data();
 
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow dgvRow = dataGridView1.CurrentRow;
+            int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);
+            Group g = new Group(id);
+            g.Show();
+            this.Hide();
         }
     }
 }
