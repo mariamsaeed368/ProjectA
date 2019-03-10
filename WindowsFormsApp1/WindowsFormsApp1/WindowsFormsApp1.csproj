@@ -52,6 +52,12 @@
     <Compile Include="Advisor.Designer.cs">
       <DependentUpon>Advisor.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainGroup.Designer.cs">
+      <DependentUpon>MainGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Project.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Advisor.resx">
       <DependentUpon>Advisor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainGroup.resx">
+      <DependentUpon>MainGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Project.resx">
       <DependentUpon>Project.cs</DependentUpon>

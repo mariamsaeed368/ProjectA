@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace WindowsFormsApp1
 {
@@ -23,7 +24,14 @@ namespace WindowsFormsApp1
 
         private void Group_Load(object sender, EventArgs e)
         {
-
+            SqlConnection conn = new SqlConnection(@"Data Source=SONY\SQLEXPRESS;Initial Catalog=ProjectA;Integrated Security=True");
+            SqlDataAdapter da = new SqlDataAdapter("Select Id from [ProjectA].[dbo].[Group]", conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                comboBox2.Items.Add(dt.Rows[i]["Id"]);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,42 +39,50 @@ namespace WindowsFormsApp1
             conn.Open();
             SqlCommand comd = new SqlCommand("Select Id from Lookup where Lookup.Value='" + comboBox1.Text + "'", conn);
             int g = (int)comd.ExecuteScalar();
-            SqlCommand cmd = new SqlCommand("Insert into [ProjectA].[dbo].[Group](Created_On) values('" + textBox2.Text + "')", conn);
-            cmd.ExecuteNonQuery();
-            SqlCommand cmd3 = new SqlCommand("Select IDENT_CURRENT('[ProjectA].[dbo].[Group]')", conn);
-            int modified = Convert.ToInt32(cmd3.ExecuteScalar());
-            SqlCommand cmd4 = new SqlCommand("Select Id from Student where Id='" + textBox1.Text + "'", conn);
-            int id = Convert.ToInt32(cmd4.ExecuteScalar());
-            SqlCommand cmd1 = new SqlCommand("Insert into GroupStudent(GroupId,StudentId,Status,AssignmentDate) values('" + modified + "','" + textBox1.Text + "','" + g + "','" + textBox2.Text + "')", conn);
+            SqlCommand cmd1 = new SqlCommand("Insert into GroupStudent(GroupId,StudentId,Status,AssignmentDate) values('" + comboBox2.Text + "','" + textBox1.Text + "','" + g + "','" + dateTimePicker1.Value.ToShortDateString()+ "')", conn);
             MessageBox.Show("Data saved");
             cmd1.ExecuteNonQuery();
             conn.Close();
             display_data();
             textBox1.Text = " ";
             comboBox1.Text = " ";
-            textBox2.Text = " ";
+            comboBox2.Text = " ";
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            conn.Open();
             if (dataGridView1.CurrentRow != null)
             {
-                conn.Open();
+               // conn.Open();
                 DataGridViewRow dgvRow = dataGridView1.CurrentRow;
                 int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);
-                int stat = Convert.ToInt32(dgvRow.Cells["Status"].Value == DBNull.Value ? "" : dgvRow.Cells["Status"].Value);
                 DateTime dt = Convert.ToDateTime(dgvRow.Cells["Created_On"].Value == DBNull.Value ? "" : dgvRow.Cells["Created_On"].Value);
-                SqlCommand sqlCmd = new SqlCommand("Update [ProjectA].[dbo].[Group] set Created_On='" + dt + "' where Id='" + id + "'", conn);
-                SqlCommand sqlCmd2 = new SqlCommand("Update GroupStudent set GroupId='" + id + "',AssignmentDate='" + dt + "',Status='" + stat + "' where GroupId='" + id + "'", conn);
-                sqlCmd2.ExecuteNonQuery();
-                sqlCmd.ExecuteNonQuery();
-                MessageBox.Show("Updated");
-                conn.Close();
-                display_data();
-
+                string role = dgvRow.Cells["Status"].Value == DBNull.Value ? "" : dgvRow.Cells["Status"].Value.ToString();
+                if(role != "3" && role != "4")
+                {
+                    MessageBox.Show("Please Enter the valid Role (Hint : Select 3 or 4)");
+                }
+                else
+                {
+                    SqlCommand sqlCmd = new SqlCommand("Update [ProjectA].[dbo].[Group] set Created_On='" + dt + "' where Id='" + id + "'", conn);
+                    //try
+                    //{
+                        SqlCommand sqlCmd2 = new SqlCommand("Update [ProjectA].[dbo].[GroupStudent] set AssignmentDate='" + dt + "',Status='" + role + "' where GroupId='" + id + "'", conn);
+                        sqlCmd2.ExecuteNonQuery();
+                    //}
+                    //catch (Exception d)
+                    //{
+                      //  MessageBox.Show("Please Enter the valid Role (Hint : Select 11,12 or 14)");
+                  //  }
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show("Updated");
+                   // conn.Close();   
+                }
             }
-
+            conn.Close();
+            display_data();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -120,6 +136,11 @@ namespace WindowsFormsApp1
             Person p = new Person();
             p.Show();
             this.Hide();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

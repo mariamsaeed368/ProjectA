@@ -216,5 +216,12 @@ namespace WindowsFormsApp1
             a.Show();
             this.Hide();
         }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MainGroup m = new MainGroup();
+            m.Show();
+            this.Hide();
+        }
     }
 }

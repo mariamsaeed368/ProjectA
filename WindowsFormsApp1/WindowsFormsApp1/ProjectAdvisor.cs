@@ -99,34 +99,46 @@ namespace WindowsFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
+            conn.Open();
             if (dataGridView1.CurrentRow != null)
             {
-                conn.Open();
+
                 DataGridViewRow dgvRow = dataGridView1.CurrentRow;
                 int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);
+                int aid = Convert.ToInt32(dgvRow.Cells["AdvisorId"].Value);
                 string desc = dgvRow.Cells["Description"].Value == DBNull.Value ? "" : dgvRow.Cells["Description"].Value.ToString();
                 string title = dgvRow.Cells["Title"].Value == DBNull.Value ? "" : dgvRow.Cells["Title"].Value.ToString();
                 DateTime dt = Convert.ToDateTime(dgvRow.Cells["AssignmentDate"].Value == DBNull.Value ? "" : dgvRow.Cells["AssignmentDate"].Value);
                 string role = dgvRow.Cells["AdvisorRole"].Value == DBNull.Value ? "" : dgvRow.Cells["AdvisorRole"].Value.ToString();
-                SqlCommand sqlCmd = new SqlCommand("Update [ProjectA].[dbo].[Project] set Title='" + title + "',Description='" + desc + "' where Id='" + id + "'", conn);
-                try
-                {
-                    SqlCommand sqlCmd2 = new SqlCommand("Update ProjectAdvisor set AssignmentDate='" + dt + "',AdvisorRole='" + role + "' where ProjectId='" + id + "'", conn);
-                    sqlCmd2.ExecuteNonQuery();
-                }
-                catch (Exception d)
+                if (role != "11" && role != "12" && role != "14")
                 {
                     MessageBox.Show("Please Enter the valid Role (Hint : Select 11,12 or 14)");
                 }
-                sqlCmd.ExecuteNonQuery();
-                MessageBox.Show("Updated");
-                conn.Close();
-                display_data();
+                else
+                {
+                    /*SqlCommand comd = new SqlCommand("Select Id from Lookup where Lookup.Value='" + role + "'", conn);
+                    int g = (int)comd.ExecuteScalar();*/
+                    SqlCommand sqlCmd = new SqlCommand("Update [ProjectA].[dbo].[Project] set Title='" + title + "',Description='" + desc + "' where Id='" + id + "'", conn);
+                  //  try
+                 //   {
+                        SqlCommand sqlCmd2 = new SqlCommand("Update ProjectAdvisor set AssignmentDate='" + dt + "',AdvisorRole='" + role + "' where AdvisorId='" + aid + "'", conn);
+                        sqlCmd2.ExecuteNonQuery();
+                  //  }
+                   // catch (Exception d)
+                  //  {
+                   //     MessageBox.Show("Please Enter the valid Role (Hint : Select 11,12 or 14)");
+                  //  }
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show("Updated");
+
+                }
 
             }
+            conn.Close();
+            display_data();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+            private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Advisor a = new Advisor();
             a.Show();
