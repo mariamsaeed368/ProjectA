@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
         {
             if(textBox1.Text=="Admin" && textBox2.Text=="123")
             {
-                MessageBox.Show("Welcome to FYP managemen system");
+                MessageBox.Show("Welcome to FYP management system");
                 Person b = new Person();
                 b.Show();
                 this.Hide();

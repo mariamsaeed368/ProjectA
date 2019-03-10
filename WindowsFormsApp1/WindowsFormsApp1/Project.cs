@@ -106,5 +106,19 @@ namespace WindowsFormsApp1
             p.Show();
             this.Hide();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow dgvRow = dataGridView1.CurrentRow;
+            int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);
+            GroupProject g = new GroupProject(id);
+            g.Show();
+            this.Hide();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+            display_data();
+        }
     }
 }

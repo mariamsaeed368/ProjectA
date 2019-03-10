@@ -62,6 +62,7 @@ namespace WindowsFormsApp1
             {
                 comboBox1.Items.Add(dt.Rows[i]["Id"]);
             }
+            display_data();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -121,7 +122,7 @@ namespace WindowsFormsApp1
                     SqlCommand sqlCmd = new SqlCommand("Update [ProjectA].[dbo].[Project] set Title='" + title + "',Description='" + desc + "' where Id='" + id + "'", conn);
                   //  try
                  //   {
-                        SqlCommand sqlCmd2 = new SqlCommand("Update ProjectAdvisor set AssignmentDate='" + dt + "',AdvisorRole='" + role + "' where AdvisorId='" + aid + "'", conn);
+                        SqlCommand sqlCmd2 = new SqlCommand("Update ProjectAdvisor set AssignmentDate='" + dt + "',AdvisorRole='" + role + "' where AdvisorId='" + aid + "' AND ProjectId='"+id+"'", conn);
                         sqlCmd2.ExecuteNonQuery();
                   //  }
                    // catch (Exception d)
@@ -150,6 +151,11 @@ namespace WindowsFormsApp1
             Project p = new Project();
             p.Show();
             this.Hide();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

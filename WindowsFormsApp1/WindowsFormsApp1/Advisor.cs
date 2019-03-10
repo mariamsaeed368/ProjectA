@@ -108,5 +108,10 @@ namespace WindowsFormsApp1
             p.Show();
             this.Hide();
         }
+
+        private void Advisor_Load(object sender, EventArgs e)
+        {
+            display_data();
+        }
     }
 }

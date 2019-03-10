@@ -27,9 +27,16 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             conn.Open();
-            SqlCommand cmd = new SqlCommand("Insert into [ProjectA].[dbo].[Group] (Created_On) values('" + textBox1.Text + "')", conn);
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Data saved");
+            try
+            {
+                SqlCommand cmd = new SqlCommand("Insert into [ProjectA].[dbo].[Group] (Created_On) values('" + textBox1.Text + "')", conn);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Data saved");
+            }
+            catch(Exception h)
+            {
+                MessageBox.Show("Please Enter valid date (Hint: d/m/yy");
+            } 
             conn.Close();
             display_data();
             textBox1.Text = " ";

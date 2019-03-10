@@ -33,6 +33,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Project = new System.Windows.Forms.DataGridViewButtonColumn();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Project = new System.Windows.Forms.DataGridViewButtonColumn();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -96,6 +96,11 @@
             this.dataGridView1.Size = new System.Drawing.Size(483, 183);
             this.dataGridView1.TabIndex = 30;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Project
+            // 
+            this.Project.HeaderText = "Project";
+            this.Project.Name = "Project";
             // 
             // textBox2
             // 
@@ -173,11 +178,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Advisor";
             // 
-            // Project
-            // 
-            this.Project.HeaderText = "Project";
-            this.Project.Name = "Project";
-            // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
@@ -197,6 +197,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Advisor";
             this.Text = "Advisor";
+            this.Load += new System.EventHandler(this.Advisor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
