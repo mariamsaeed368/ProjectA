@@ -92,5 +92,21 @@ namespace WindowsFormsApp1
                 }
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow dgvRow = dataGridView1.CurrentRow;
+            int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);
+            ProjectAdvisor g = new ProjectAdvisor(id);
+            g.Show();
+            this.Hide();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Person p = new Person();
+            p.Show();
+            this.Hide();
+        }
     }
 }

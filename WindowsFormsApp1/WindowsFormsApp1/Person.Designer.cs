@@ -243,7 +243,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(454, 321);
+            this.linkLabel1.Location = new System.Drawing.Point(426, 321);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(82, 13);
             this.linkLabel1.TabIndex = 21;
@@ -285,7 +285,7 @@
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(542, 321);
+            this.linkLabel2.Location = new System.Drawing.Point(514, 321);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(84, 13);
             this.linkLabel2.TabIndex = 22;

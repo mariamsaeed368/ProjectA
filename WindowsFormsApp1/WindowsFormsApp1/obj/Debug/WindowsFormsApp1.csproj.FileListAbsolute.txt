@@ -11,10 +11,8 @@ C:\Users\Vaio\Documents\Visual Studio 2017\Projects\WindowsFormsApp1\WindowsForm
 C:\Users\Vaio\Documents\Visual Studio 2017\Projects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Person.resources
 C:\Users\Vaio\Documents\Visual Studio 2017\Projects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
 C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
-C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
 C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Group.resources
 C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Person.resources
-C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
 C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
 C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
@@ -37,3 +35,7 @@ C:\Users\Vaio\Desktop\New folder (2)\ProjectA\WindowsFormsApp1\WindowsFormsApp1\
 C:\Users\Vaio\Desktop\New folder (2)\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\Vaio\Desktop\New folder (2)\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Login.resources
 C:\Users\Vaio\Desktop\New folder (2)\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Advisor.resources
+C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Advisor.resources
+C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Project.resources
+C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Login.resources
+C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ProjectAdvisor.resources

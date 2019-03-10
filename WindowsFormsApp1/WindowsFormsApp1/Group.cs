@@ -114,5 +114,12 @@ namespace WindowsFormsApp1
         {
             display_data();
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Person p = new Person();
+            p.Show();
+            this.Hide();
+        }
     }
 }
