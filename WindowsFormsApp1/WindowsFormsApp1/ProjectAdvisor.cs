@@ -43,7 +43,7 @@ namespace WindowsFormsApp1
             conn.Open();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT  a.*,s.AdvisorRole,s.AssignmentDate,s.AdvisorId,s.ProjectId FROM[ProjectA].[dbo].[Project] as a JOIN ProjectAdvisor s ON a.Id = s.ProjectId";
+            cmd.CommandText = "SELECT  s.AdvisorId,a.*,s.AdvisorRole,s.AssignmentDate,s.ProjectId FROM[ProjectA].[dbo].[Project] as a JOIN ProjectAdvisor s ON a.Id = s.ProjectId";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -85,11 +85,11 @@ namespace WindowsFormsApp1
                         cmd.CommandType = CommandType.Text;
                         SqlCommand cmd2 = new SqlCommand("DeleteByID", sqlCon);
                         cmd2.CommandType = CommandType.Text;
-                        int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
-                        cmd.CommandText = "Delete from  [ProjectA].[dbo].[Project] where Id='" + rowID + "'";
-                        cmd2.CommandText = "Delete from ProjectAdvisor where ProjectId='" + rowID + "'";
+                        int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["AdvisorId"].Value);
+                       // cmd.CommandText = "Delete from  [ProjectA].[dbo].[Project] where Id='" + rowID + "'";
+                        cmd2.CommandText = "Delete from ProjectAdvisor where AdvisorId='" + rowID + "'";
                         cmd2.ExecuteNonQuery();
-                        cmd.ExecuteNonQuery();
+                       // cmd.ExecuteNonQuery();
                         display_data();
                         MessageBox.Show("Deleted");
                         sqlCon.Close();
@@ -107,8 +107,8 @@ namespace WindowsFormsApp1
                 DataGridViewRow dgvRow = dataGridView1.CurrentRow;
                 int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);
                 int aid = Convert.ToInt32(dgvRow.Cells["AdvisorId"].Value);
-                string desc = dgvRow.Cells["Description"].Value == DBNull.Value ? "" : dgvRow.Cells["Description"].Value.ToString();
-                string title = dgvRow.Cells["Title"].Value == DBNull.Value ? "" : dgvRow.Cells["Title"].Value.ToString();
+               // string desc = dgvRow.Cells["Description"].Value == DBNull.Value ? "" : dgvRow.Cells["Description"].Value.ToString();
+              //  string title = dgvRow.Cells["Title"].Value == DBNull.Value ? "" : dgvRow.Cells["Title"].Value.ToString();
                 DateTime dt = Convert.ToDateTime(dgvRow.Cells["AssignmentDate"].Value == DBNull.Value ? "" : dgvRow.Cells["AssignmentDate"].Value);
                 string role = dgvRow.Cells["AdvisorRole"].Value == DBNull.Value ? "" : dgvRow.Cells["AdvisorRole"].Value.ToString();
                 if (role != "11" && role != "12" && role != "14")
@@ -119,7 +119,7 @@ namespace WindowsFormsApp1
                 {
                     /*SqlCommand comd = new SqlCommand("Select Id from Lookup where Lookup.Value='" + role + "'", conn);
                     int g = (int)comd.ExecuteScalar();*/
-                    SqlCommand sqlCmd = new SqlCommand("Update [ProjectA].[dbo].[Project] set Title='" + title + "',Description='" + desc + "' where Id='" + id + "'", conn);
+                   // SqlCommand sqlCmd = new SqlCommand("Update [ProjectA].[dbo].[Project] set Title='" + title + "',Description='" + desc + "' where Id='" + id + "'", conn);
                   //  try
                  //   {
                         SqlCommand sqlCmd2 = new SqlCommand("Update ProjectAdvisor set AssignmentDate='" + dt + "',AdvisorRole='" + role + "' where AdvisorId='" + aid + "' AND ProjectId='"+id+"'", conn);
@@ -129,7 +129,7 @@ namespace WindowsFormsApp1
                   //  {
                    //     MessageBox.Show("Please Enter the valid Role (Hint : Select 11,12 or 14)");
                   //  }
-                    sqlCmd.ExecuteNonQuery();
+                  //  sqlCmd.ExecuteNonQuery();
                     MessageBox.Show("Updated");
 
                 }

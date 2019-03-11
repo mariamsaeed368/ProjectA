@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
 
         private void MainGroup_Load(object sender, EventArgs e)
         {
-
+            display_data();
         }
 
         private void button1_Click(object sender, EventArgs e)

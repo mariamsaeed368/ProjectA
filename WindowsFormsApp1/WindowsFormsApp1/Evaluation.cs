@@ -11,40 +11,40 @@ using System.Data.SqlClient;
 
 namespace WindowsFormsApp1
 {
-    public partial class Project : Form
+    public partial class Evaluation : Form
     {
         SqlConnection conn = new SqlConnection(@"Data Source=SONY\SQLEXPRESS;Initial Catalog=ProjectA;Integrated Security=True");
-        public Project()
+        public Evaluation()
         {
             InitializeComponent();
         }
 
-        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            Person p = new Person();
+            p.Show();
+            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             conn.Open();
-            SqlCommand cmd = new SqlCommand("Insert into Project(Description,Title) values('" + richTextBox1.Text + "','" + textBox1.Text + "')", conn);
+            SqlCommand cmd = new SqlCommand("Insert into Evaluation(Name,TotalMarks,TotalWeightage) values('" + textBox1.Text + "', '" + textBox2.Text + "','" + textBox3.Text + "')", conn);
             cmd.ExecuteNonQuery();
-            /* SqlCommand cmd3 = new SqlCommand("Select IDENT_CURRENT('Project')", conn);
-             //  cmd3.ExecuteNonQuery();*/
-            // int modified = Convert.ToInt32(cmd3.ExecuteScalar());
             MessageBox.Show("Data saved");
             conn.Close();
             display_data();
             textBox1.Text = " ";
-            richTextBox1.Text = " ";
-
+            textBox2.Text = " ";
+            textBox3.Text = " ";
         }
         public void display_data()
         {
             conn.Open();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "Select * from Project";
+            cmd.CommandText = "Select * from Evaluation";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -52,9 +52,30 @@ namespace WindowsFormsApp1
             dataGridView1.DataSource = dt;
             conn.Close();
         }
-        private void button3_Click(object sender, EventArgs e)
+
+        private void Evaluation_Load(object sender, EventArgs e)
         {
             display_data();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            if (dataGridView1.CurrentRow != null)
+            {
+                conn.Open();
+                DataGridViewRow dgvRow = dataGridView1.CurrentRow;
+                int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);
+                int t_marks = Convert.ToInt32(dgvRow.Cells["TotalMarks"].Value);
+                int t_weight= Convert.ToInt32(dgvRow.Cells["TotalWeightage"].Value);
+                string title = dgvRow.Cells["Name"].Value == DBNull.Value ? "" : dgvRow.Cells["Name"].Value.ToString();
+                SqlCommand sqlCmd = new SqlCommand("Update Evaluation set Name='" + title + "' ,TotalMarks='" + t_marks + "',TotalWeightage='"+t_weight+"' where Id='" + id + "'", conn);
+                sqlCmd.ExecuteNonQuery();
+                MessageBox.Show("Updated");
+                conn.Close();
+                display_data();
+
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -71,7 +92,7 @@ namespace WindowsFormsApp1
                         SqlCommand cmd = new SqlCommand("DeleteByID", sqlCon);
                         cmd.CommandType = CommandType.Text;
                         int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
-                        cmd.CommandText = "Delete from Project where Id='" + rowID + "'";
+                        cmd.CommandText = "Delete from Evaluation where Id='" + rowID + "'";
                         cmd.ExecuteNonQuery();
                         display_data();
                         MessageBox.Show("Deleted");
@@ -81,49 +102,13 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-            if (dataGridView1.CurrentRow != null)
-            {
-                conn.Open();
-                DataGridViewRow dgvRow = dataGridView1.CurrentRow;
-                int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);
-                string title = dgvRow.Cells["Title"].Value == DBNull.Value ? "" : dgvRow.Cells["Title"].Value.ToString();
-                string desc = dgvRow.Cells["Description"].Value == DBNull.Value ? "" : dgvRow.Cells["Description"].Value.ToString();
-                SqlCommand sqlCmd = new SqlCommand("Update Project set Title='" + title + "' ,Description='" + desc + "' where Id='" + id + "'", conn);
-                sqlCmd.ExecuteNonQuery();
-                MessageBox.Show("Updated");
-                conn.Close();
-                display_data();
-
-            }
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Person p = new Person();
-            p.Show();
-            this.Hide();
-        }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow dgvRow = dataGridView1.CurrentRow;
             int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);
-            GroupProject g = new GroupProject(id);
+            GroupEvaluation g = new GroupEvaluation(id);
             g.Show();
             this.Hide();
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-            display_data();
-        }
-
-        private void Project_Load(object sender, EventArgs e)
-        {
-            display_data();
         }
     }
 }

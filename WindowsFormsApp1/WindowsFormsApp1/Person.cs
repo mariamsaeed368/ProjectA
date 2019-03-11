@@ -223,5 +223,12 @@ namespace WindowsFormsApp1
             m.Show();
             this.Hide();
         }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Evaluation s = new Evaluation();
+            s.Show();
+            this.Hide();
+        }
     }
 }

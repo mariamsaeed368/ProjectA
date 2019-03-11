@@ -32,6 +32,7 @@ namespace WindowsFormsApp1
             {
                 comboBox2.Items.Add(dt.Rows[i]["Id"]);
             }
+            display_data();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -66,8 +67,7 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    SqlCommand sqlCmd = new SqlCommand("Update [ProjectA].[dbo].[Group] set Created_On='" + dt + "' where Id='" + id + "'", conn);
-                    //try
+                  //try
                     //{
                         SqlCommand sqlCmd2 = new SqlCommand("Update [ProjectA].[dbo].[GroupStudent] set AssignmentDate='" + dt + "',Status='" + role + "' where GroupId='" + id + "'", conn);
                         sqlCmd2.ExecuteNonQuery();
@@ -76,7 +76,7 @@ namespace WindowsFormsApp1
                     //{
                       //  MessageBox.Show("Please Enter the valid Role (Hint : Select 11,12 or 14)");
                   //  }
-                    sqlCmd.ExecuteNonQuery();
+                   // sqlCmd.ExecuteNonQuery();
                     MessageBox.Show("Updated");
                    // conn.Close();   
                 }
@@ -96,15 +96,11 @@ namespace WindowsFormsApp1
                     using (SqlConnection sqlCon = new SqlConnection(conn))
                     {
                         sqlCon.Open();
-                        SqlCommand cmd = new SqlCommand("DeleteByID", sqlCon);
-                        cmd.CommandType = CommandType.Text;
                         SqlCommand cmd2 = new SqlCommand("DeleteByID", sqlCon);
                         cmd2.CommandType = CommandType.Text;
                         int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
-                        cmd.CommandText = "Delete from  [ProjectA].[dbo].[Group] where Id='" + rowID + "'";
                         cmd2.CommandText = "Delete from GroupStudent where GroupId='" + rowID + "'";
                         cmd2.ExecuteNonQuery();
-                        cmd.ExecuteNonQuery();
                         display_data();
                         MessageBox.Show("Deleted");
                         sqlCon.Close();

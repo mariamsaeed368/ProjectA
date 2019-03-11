@@ -41,3 +41,5 @@ C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\
 C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ProjectAdvisor.resources
 C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MainGroup.resources
 C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GroupProject.resources
+C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Evaluation.resources
+C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GroupEvaluation.resources
