@@ -36,9 +36,20 @@ namespace WindowsFormsApp1
             conn.Open();
             SqlCommand comd = new SqlCommand("Select Id from Lookup where Lookup.Value='" + comboBox1.Text + "'", conn);
             int g = (int)comd.ExecuteScalar();
-            SqlCommand cmd = new SqlCommand("Insert into Advisor(Id,Designation,Salary) values('" + textBox1.Text + "', '" + g + "','" + textBox2.Text + "')", conn);
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Data saved");
+            try
+            {
+                SqlCommand cmd = new SqlCommand("Insert into Advisor(Id,Designation,Salary) values('" + textBox1.Text + "', '" + g + "','" + textBox2.Text + "')", conn);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Data saved");
+            }
+            catch(SqlException Ex)
+            {
+                if(Ex.Number==2627)
+                {
+                    MessageBox.Show("This ID is already in use.Please Try another one.");
+                }
+            }
+           
             conn.Close();
             display_data();
             textBox1.Text = " ";

@@ -93,7 +93,8 @@ namespace WindowsFormsApp1
                         SqlCommand cmd = new SqlCommand("EmployeeDeleteByID", sqlCon);
                         cmd.CommandType = CommandType.Text;
                         int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProjectId"].Value);
-                        cmd.CommandText = "Delete from GroupProject where ProjectId='" + rowID + "'";
+                        int g_id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["GroupId"].Value);
+                        cmd.CommandText = "Delete from GroupProject where ProjectId='" + rowID + "' AND GroupId='"+g_id+"'";
                         cmd.ExecuteNonQuery();
                         display_data();
                         MessageBox.Show("Deleted");
@@ -111,10 +112,11 @@ namespace WindowsFormsApp1
 
                 DataGridViewRow dgvRow = dataGridView1.CurrentRow;
                 int id = Convert.ToInt32(dgvRow.Cells["ProjectId"].Value);
+                int g_id= Convert.ToInt32(dataGridView1.CurrentRow.Cells["GroupId"].Value);
                 DateTime dt = Convert.ToDateTime(dgvRow.Cells["AssignmentDate"].Value == DBNull.Value ? "" : dgvRow.Cells["AssignmentDate"].Value);
                 try
                 {
-                    SqlCommand sqlCmd = new SqlCommand("Update [ProjectA].[dbo].[GroupProject] set AssignmentDate='" + dt + "' where ProjectId='" + id + "'", conn);
+                    SqlCommand sqlCmd = new SqlCommand("Update [ProjectA].[dbo].[GroupProject] set AssignmentDate='" + dt + "' where ProjectId='" + id + "' AND GroupId='"+g_id+"'", conn);
                     sqlCmd.ExecuteNonQuery();
                     MessageBox.Show("Updated");
                 }

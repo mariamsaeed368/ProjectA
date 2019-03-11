@@ -138,32 +138,6 @@ namespace WindowsFormsApp1
                 }
             }
         }
-
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView1.CurrentRow != null)
-            {
-                conn.Open();
-                DataGridViewRow dgvRow = dataGridView1.CurrentRow;
-                int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);
-                string regno = dgvRow.Cells["RegistrationNo"].Value == DBNull.Value ? "" : dgvRow.Cells["RegistrationNo"].Value.ToString();
-                string fname = dgvRow.Cells["FirstName"].Value == DBNull.Value ? "" : dgvRow.Cells["FirstName"].Value.ToString();
-                string lname = dgvRow.Cells["LastName"].Value == DBNull.Value ? "" : dgvRow.Cells["LastName"].Value.ToString();
-                string contact = dgvRow.Cells["Contact"].Value == DBNull.Value ? "" : dgvRow.Cells["Contact"].Value.ToString();
-                string email = dgvRow.Cells["Email"].Value == DBNull.Value ? "" : dgvRow.Cells["Email"].Value.ToString();
-                DateTime dob = Convert.ToDateTime(dgvRow.Cells["DateOfBirth"].Value == DBNull.Value ? "" : dgvRow.Cells["DateOfBirth"].Value);
-                int gender = Convert.ToInt32(dgvRow.Cells["Gender"].Value == DBNull.Value ? "" : dgvRow.Cells["Gender"].Value);
-                SqlCommand sqlCmd = new SqlCommand("Update Person set FirstName='" + fname + "' ,LastName='" + lname + "' ,Contact='" + contact + "' ,Email='" + email + "', DateOfBirth='" + dob + "' ,Gender='" + gender + "' where Id='" + id + "'", conn);
-                SqlCommand sqlCmd2 = new SqlCommand("Update Student set RegistrationNo='" + regno + "' where Id='" + id + "'", conn);
-                sqlCmd2.ExecuteNonQuery();
-                sqlCmd.ExecuteNonQuery();
-                MessageBox.Show("Updated");
-                conn.Close();
-                display_data();
-
-            }
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow != null)
@@ -204,12 +178,6 @@ namespace WindowsFormsApp1
             p.Show();
             this.Hide();
         }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Advisor a = new Advisor();
@@ -228,6 +196,18 @@ namespace WindowsFormsApp1
         {
             Evaluation s = new Evaluation();
             s.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            display_data();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Report r = new Report();
+            r.Show();
             this.Hide();
         }
     }
