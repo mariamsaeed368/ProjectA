@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="EvaluationDataset" targetNamespace="http://tempuri.org/EvaluationDataset.xsd" xmlns:mstns="http://tempuri.org/EvaluationDataset.xsd" xmlns="http://tempuri.org/EvaluationDataset.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ProjectAConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ProjectAConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WindowsFormsApp1.Properties.Settings.GlobalReference.Default.ProjectAConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EvaluationViewTableAdapter" GeneratorDataComponentClassName="EvaluationViewTableAdapter" Name="EvaluationView" UserDataComponentName="EvaluationViewTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProjectAConnectionString (Settings)" DbObjectName="ProjectA.dbo.EvaluationView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Id, Name, TotalMarks, TotalWeightage, EvaluationDate, GroupId, ObtainedMarks FROM dbo.EvaluationView</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="TotalMarks" DataSetColumn="TotalMarks" />
+              <Mapping SourceColumn="TotalWeightage" DataSetColumn="TotalWeightage" />
+              <Mapping SourceColumn="EvaluationDate" DataSetColumn="EvaluationDate" />
+              <Mapping SourceColumn="GroupId" DataSetColumn="GroupId" />
+              <Mapping SourceColumn="ObtainedMarks" DataSetColumn="ObtainedMarks" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="EvaluationDataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="EvaluationDataset" msprop:Generator_UserDSName="EvaluationDataset">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EvaluationView" msprop:Generator_TableClassName="EvaluationViewDataTable" msprop:Generator_TableVarName="tableEvaluationView" msprop:Generator_TablePropName="EvaluationView" msprop:Generator_RowDeletingName="EvaluationViewRowDeleting" msprop:Generator_RowChangingName="EvaluationViewRowChanging" msprop:Generator_RowEvHandlerName="EvaluationViewRowChangeEventHandler" msprop:Generator_RowDeletedName="EvaluationViewRowDeleted" msprop:Generator_UserTableName="EvaluationView" msprop:Generator_RowChangedName="EvaluationViewRowChanged" msprop:Generator_RowEvArgName="EvaluationViewRowChangeEvent" msprop:Generator_RowClassName="EvaluationViewRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TotalMarks" msprop:Generator_ColumnVarNameInTable="columnTotalMarks" msprop:Generator_ColumnPropNameInRow="TotalMarks" msprop:Generator_ColumnPropNameInTable="TotalMarksColumn" msprop:Generator_UserColumnName="TotalMarks" type="xs:int" />
+              <xs:element name="TotalWeightage" msprop:Generator_ColumnVarNameInTable="columnTotalWeightage" msprop:Generator_ColumnPropNameInRow="TotalWeightage" msprop:Generator_ColumnPropNameInTable="TotalWeightageColumn" msprop:Generator_UserColumnName="TotalWeightage" type="xs:int" />
+              <xs:element name="EvaluationDate" msprop:Generator_ColumnVarNameInTable="columnEvaluationDate" msprop:Generator_ColumnPropNameInRow="EvaluationDate" msprop:Generator_ColumnPropNameInTable="EvaluationDateColumn" msprop:Generator_UserColumnName="EvaluationDate" type="xs:dateTime" />
+              <xs:element name="GroupId" msprop:Generator_ColumnVarNameInTable="columnGroupId" msprop:Generator_ColumnPropNameInRow="GroupId" msprop:Generator_ColumnPropNameInTable="GroupIdColumn" msprop:Generator_UserColumnName="GroupId" type="xs:int" />
+              <xs:element name="ObtainedMarks" msprop:Generator_ColumnVarNameInTable="columnObtainedMarks" msprop:Generator_ColumnPropNameInRow="ObtainedMarks" msprop:Generator_ColumnPropNameInTable="ObtainedMarksColumn" msprop:Generator_UserColumnName="ObtainedMarks" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

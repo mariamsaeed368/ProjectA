@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Report
+    partial class EvaluationReport
     {
         /// <summary>
         /// Required designer variable.
@@ -30,45 +30,45 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.ViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DataSet1 = new WindowsFormsApp1.DataSet1();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.ViewTableAdapter = new WindowsFormsApp1.DataSet1TableAdapters.ViewTableAdapter();
+            this.EvaluationViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.EvaluationDataset = new WindowsFormsApp1.EvaluationDataset();
+            this.EvaluationViewTableAdapter = new WindowsFormsApp1.EvaluationDatasetTableAdapters.EvaluationViewTableAdapter();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.ViewBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EvaluationViewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EvaluationDataset)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ViewBindingSource
-            // 
-            this.ViewBindingSource.DataMember = "View";
-            this.ViewBindingSource.DataSource = this.DataSet1;
-            // 
-            // DataSet1
-            // 
-            this.DataSet1.DataSetName = "DataSet1";
-            this.DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
-            reportDataSource2.Name = "DataSet1";
-            reportDataSource2.Value = this.ViewBindingSource;
+            reportDataSource2.Name = "EvaluationDataset";
+            reportDataSource2.Value = this.EvaluationViewBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp1.Report1.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp1.EvaluationReport.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, -1);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(943, 420);
+            this.reportViewer1.Size = new System.Drawing.Size(1094, 425);
             this.reportViewer1.TabIndex = 0;
             // 
-            // ViewTableAdapter
+            // EvaluationViewBindingSource
             // 
-            this.ViewTableAdapter.ClearBeforeFill = true;
+            this.EvaluationViewBindingSource.DataMember = "EvaluationView";
+            this.EvaluationViewBindingSource.DataSource = this.EvaluationDataset;
+            // 
+            // EvaluationDataset
+            // 
+            this.EvaluationDataset.DataSetName = "EvaluationDataset";
+            this.EvaluationDataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // EvaluationViewTableAdapter
+            // 
+            this.EvaluationViewTableAdapter.ClearBeforeFill = true;
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(857, 428);
+            this.linkLabel1.Location = new System.Drawing.Point(1019, 445);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(49, 13);
             this.linkLabel1.TabIndex = 1;
@@ -76,18 +76,18 @@
             this.linkLabel1.Text = "Go Back";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // Report
+            // EvaluationReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 450);
+            this.ClientSize = new System.Drawing.Size(1094, 463);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.reportViewer1);
-            this.Name = "Report";
-            this.Text = "Report";
-            this.Load += new System.EventHandler(this.Report_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ViewBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).EndInit();
+            this.Name = "EvaluationReport";
+            this.Text = "EvaluationReport";
+            this.Load += new System.EventHandler(this.EvaluationReport_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.EvaluationViewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EvaluationDataset)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,9 +96,9 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource ViewBindingSource;
-        private DataSet1 DataSet1;
-        private DataSet1TableAdapters.ViewTableAdapter ViewTableAdapter;
+        private System.Windows.Forms.BindingSource EvaluationViewBindingSource;
+        private EvaluationDataset EvaluationDataset;
+        private EvaluationDatasetTableAdapters.EvaluationViewTableAdapter EvaluationViewTableAdapter;
         private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

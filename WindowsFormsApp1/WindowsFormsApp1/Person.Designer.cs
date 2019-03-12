@@ -51,10 +51,11 @@
             this.button4 = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -257,6 +258,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.linkLabel4);
             this.groupBox1.Controls.Add(this.linkLabel3);
@@ -287,6 +289,16 @@
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Person";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(530, 60);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(145, 43);
+            this.button5.TabIndex = 25;
+            this.button5.Text = "Report";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // linkLabel4
             // 
@@ -321,15 +333,15 @@
             this.linkLabel2.Text = "Manage Advisor";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
-            // button5
+            // button6
             // 
-            this.button5.Location = new System.Drawing.Point(530, 60);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(145, 43);
-            this.button5.TabIndex = 25;
-            this.button5.Text = "Report";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button6.Location = new System.Drawing.Point(533, 154);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(141, 47);
+            this.button6.TabIndex = 26;
+            this.button6.Text = "Evaluation Report";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Person
             // 
@@ -376,6 +388,7 @@
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }
 

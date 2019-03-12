@@ -86,6 +86,17 @@
     <Compile Include="Evaluation.Designer.cs">
       <DependentUpon>Evaluation.cs</DependentUpon>
     </Compile>
+    <Compile Include="EvaluationDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EvaluationDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EvaluationReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EvaluationReport.Designer.cs">
+      <DependentUpon>EvaluationReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="GroupEvaluation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +165,10 @@
     <EmbeddedResource Include="Evaluation.resx">
       <DependentUpon>Evaluation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EvaluationReport.rdlc" />
+    <EmbeddedResource Include="EvaluationReport.resx">
+      <DependentUpon>EvaluationReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GroupEvaluation.resx">
       <DependentUpon>GroupEvaluation.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,6 +216,17 @@
     </None>
     <None Include="DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="EvaluationDataset.xsc">
+      <DependentUpon>EvaluationDataset.xsd</DependentUpon>
+    </None>
+    <None Include="EvaluationDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EvaluationDataset.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="EvaluationDataset.xss">
+      <DependentUpon>EvaluationDataset.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="ProjectADataSet.xsc">

@@ -103,3 +103,4 @@ C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\bin\
 C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Report.resources
+C:\Users\Vaio\Desktop\New folder\ProjectA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.EvaluationReport.resources
