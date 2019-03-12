@@ -52,7 +52,7 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             conn.Open();
-            SqlCommand cmd = new SqlCommand("Insert into GroupProject(ProjectId,GroupId,AssignmentDate) values('" +textBox1.Text+ "','" + comboBox1.Text+ "','" + dateTimePicker1.Value.ToShortDateString() + "')", conn);
+            SqlCommand cmd = new SqlCommand("Insert into GroupProject(ProjectId,GroupId,AssignmentDate) values('" + textBox1.Text + "','" + comboBox1.Text + "','" + dateTimePicker1.Value.ToShortDateString() + "')", conn);
             cmd.ExecuteNonQuery();
             MessageBox.Show("Data saved");
             conn.Close();
@@ -94,7 +94,7 @@ namespace WindowsFormsApp1
                         cmd.CommandType = CommandType.Text;
                         int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProjectId"].Value);
                         int g_id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["GroupId"].Value);
-                        cmd.CommandText = "Delete from GroupProject where ProjectId='" + rowID + "' AND GroupId='"+g_id+"'";
+                        cmd.CommandText = "Delete from GroupProject where ProjectId='" + rowID + "' AND GroupId='" + g_id + "'";
                         cmd.ExecuteNonQuery();
                         display_data();
                         MessageBox.Show("Deleted");
@@ -112,23 +112,30 @@ namespace WindowsFormsApp1
 
                 DataGridViewRow dgvRow = dataGridView1.CurrentRow;
                 int id = Convert.ToInt32(dgvRow.Cells["ProjectId"].Value);
-                int g_id= Convert.ToInt32(dataGridView1.CurrentRow.Cells["GroupId"].Value);
+                int g_id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["GroupId"].Value);
                 DateTime dt = Convert.ToDateTime(dgvRow.Cells["AssignmentDate"].Value == DBNull.Value ? "" : dgvRow.Cells["AssignmentDate"].Value);
-                try
+                if (!comboBox1.Items.Contains(g_id))
                 {
-                    SqlCommand sqlCmd = new SqlCommand("Update [ProjectA].[dbo].[GroupProject] set AssignmentDate='" + dt + "' where ProjectId='" + id + "' AND GroupId='"+g_id+"'", conn);
-                    sqlCmd.ExecuteNonQuery();
-                    MessageBox.Show("Updated");
+                    MessageBox.Show("Please Select the valid number (Hint:Choose the value from ComboBox)");
                 }
-                catch(Exception d)
+                else
                 {
-                    MessageBox.Show("Please Enter valid date (Hint: d/m/yy)");
-                }
+                    try
+                    {
+                        SqlCommand sqlCmd = new SqlCommand("Update [ProjectA].[dbo].[GroupProject] set AssignmentDate='" + dt + "',GroupId='"+g_id+"'where ProjectId='" + id + "'", conn);
+                        sqlCmd.ExecuteNonQuery();
+                        MessageBox.Show("Updated");
+                    }
+                    catch (Exception d)
+                    {
+                        MessageBox.Show("Please Enter valid date (Hint: d/m/yy)");
+                    }
 
-               
+
+                }
+                conn.Close();
+                display_data();
             }
-            conn.Close();
-            display_data();
         }
     }
 }

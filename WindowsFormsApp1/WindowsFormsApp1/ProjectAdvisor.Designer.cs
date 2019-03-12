@@ -148,7 +148,7 @@
             this.textBox1.Location = new System.Drawing.Point(267, 146);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(151, 20);
+            this.textBox1.Size = new System.Drawing.Size(157, 20);
             this.textBox1.TabIndex = 7;
             // 
             // label4
@@ -169,7 +169,7 @@
             "Industry Advisor"});
             this.comboBox2.Location = new System.Drawing.Point(267, 106);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(152, 21);
+            this.comboBox2.Size = new System.Drawing.Size(157, 21);
             this.comboBox2.TabIndex = 5;
             // 
             // label3

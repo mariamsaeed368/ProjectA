@@ -58,7 +58,7 @@ namespace WindowsFormsApp1
             SqlDataAdapter da = new SqlDataAdapter("Select Id from Project", conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            for(int i=0; i < dt.Rows.Count;i++)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
                 comboBox1.Items.Add(dt.Rows[i]["Id"]);
             }
@@ -86,10 +86,10 @@ namespace WindowsFormsApp1
                         SqlCommand cmd2 = new SqlCommand("DeleteByID", sqlCon);
                         cmd2.CommandType = CommandType.Text;
                         int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["AdvisorId"].Value);
-                       // cmd.CommandText = "Delete from  [ProjectA].[dbo].[Project] where Id='" + rowID + "'";
+                        // cmd.CommandText = "Delete from  [ProjectA].[dbo].[Project] where Id='" + rowID + "'";
                         cmd2.CommandText = "Delete from ProjectAdvisor where AdvisorId='" + rowID + "'";
                         cmd2.ExecuteNonQuery();
-                       // cmd.ExecuteNonQuery();
+                        // cmd.ExecuteNonQuery();
                         display_data();
                         MessageBox.Show("Deleted");
                         sqlCon.Close();
@@ -107,8 +107,8 @@ namespace WindowsFormsApp1
                 DataGridViewRow dgvRow = dataGridView1.CurrentRow;
                 int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);
                 int aid = Convert.ToInt32(dgvRow.Cells["AdvisorId"].Value);
-               // string desc = dgvRow.Cells["Description"].Value == DBNull.Value ? "" : dgvRow.Cells["Description"].Value.ToString();
-              //  string title = dgvRow.Cells["Title"].Value == DBNull.Value ? "" : dgvRow.Cells["Title"].Value.ToString();
+                // string desc = dgvRow.Cells["Description"].Value == DBNull.Value ? "" : dgvRow.Cells["Description"].Value.ToString();
+                //  string title = dgvRow.Cells["Title"].Value == DBNull.Value ? "" : dgvRow.Cells["Title"].Value.ToString();
                 DateTime dt = Convert.ToDateTime(dgvRow.Cells["AssignmentDate"].Value == DBNull.Value ? "" : dgvRow.Cells["AssignmentDate"].Value);
                 string role = dgvRow.Cells["AdvisorRole"].Value == DBNull.Value ? "" : dgvRow.Cells["AdvisorRole"].Value.ToString();
                 if (role != "11" && role != "12" && role != "14")
@@ -119,17 +119,18 @@ namespace WindowsFormsApp1
                 {
                     /*SqlCommand comd = new SqlCommand("Select Id from Lookup where Lookup.Value='" + role + "'", conn);
                     int g = (int)comd.ExecuteScalar();*/
-                   // SqlCommand sqlCmd = new SqlCommand("Update [ProjectA].[dbo].[Project] set Title='" + title + "',Description='" + desc + "' where Id='" + id + "'", conn);
-                  //  try
-                 //   {
-                        SqlCommand sqlCmd2 = new SqlCommand("Update ProjectAdvisor set AssignmentDate='" + dt + "',AdvisorRole='" + role + "' where AdvisorId='" + aid + "' AND ProjectId='"+id+"'", conn);
-                        sqlCmd2.ExecuteNonQuery();
-                  //  }
-                   // catch (Exception d)
-                  //  {
-                   //     MessageBox.Show("Please Enter the valid Role (Hint : Select 11,12 or 14)");
-                  //  }
-                  //  sqlCmd.ExecuteNonQuery();
+                    // SqlCommand sqlCmd = new SqlCommand("Update [ProjectA].[dbo].[Project] set Title='" + title + "',Description='" + desc + "' where Id='" + id + "'", conn);
+                    //  try
+                    //   {
+                    SqlCommand sqlCmd2 = new SqlCommand("Update ProjectAdvisor set AssignmentDate='" + dt + "',AdvisorRole='" + role + "' where AdvisorId='" + aid + "' AND ProjectId='" + id + "'", conn);
+                    sqlCmd2.ExecuteNonQuery();
+
+                    //  }
+                    // catch (Exception d)
+                    //  {
+                    //     MessageBox.Show("Please Enter the valid Role (Hint : Select 11,12 or 14)");
+                    //  }
+                    //  sqlCmd.ExecuteNonQuery();
                     MessageBox.Show("Updated");
 
                 }
@@ -139,7 +140,7 @@ namespace WindowsFormsApp1
             display_data();
         }
 
-            private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Advisor a = new Advisor();
             a.Show();

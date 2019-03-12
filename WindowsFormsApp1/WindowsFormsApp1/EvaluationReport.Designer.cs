@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.EvaluationViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.EvaluationDataset = new WindowsFormsApp1.EvaluationDataset();
@@ -41,9 +41,9 @@
             // 
             // reportViewer1
             // 
-            reportDataSource2.Name = "EvaluationDataset";
-            reportDataSource2.Value = this.EvaluationViewBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource3.Name = "EvaluationDataset";
+            reportDataSource3.Value = this.EvaluationViewBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp1.EvaluationReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, -1);
             this.reportViewer1.Name = "reportViewer1";
@@ -68,7 +68,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(1019, 445);
+            this.linkLabel1.Location = new System.Drawing.Point(1016, 441);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(49, 13);
             this.linkLabel1.TabIndex = 1;
@@ -80,7 +80,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1094, 463);
+            this.ClientSize = new System.Drawing.Size(1094, 468);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.reportViewer1);
             this.Name = "EvaluationReport";

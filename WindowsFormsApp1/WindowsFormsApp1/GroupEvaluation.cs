@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             conn.Open();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT  a.*,s.EvaluationDate,s.GroupId,s.ObtainedMarks FROM[ProjectA].[dbo].[Evaluation] as a JOIN GroupEvaluation s ON a.Id = s.EvaluationId";
+            cmd.CommandText = "SELECT  a.*,s.EvaluationDate,s.GroupId,s.ObtainedMarks,s.EvaluationId FROM[ProjectA].[dbo].[Evaluation] as a JOIN GroupEvaluation s ON a.Id = s.EvaluationId";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -87,7 +87,7 @@ namespace WindowsFormsApp1
                         sqlCon.Open();
                         SqlCommand cmd = new SqlCommand("DeleteByID", sqlCon);
                         cmd.CommandType = CommandType.Text;
-                        int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
+                        int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["EvaluationId"].Value);
                         int g_id= Convert.ToInt32(dataGridView1.CurrentRow.Cells["GroupId"].Value);
                         cmd.CommandText = "Delete from  [ProjectA].[dbo].[GroupEvaluation] where EvaluationId='" + rowID + "' AND GroupId='"+g_id+"'";
                         cmd.ExecuteNonQuery();
@@ -106,7 +106,7 @@ namespace WindowsFormsApp1
             {
 
                 DataGridViewRow dgvRow = dataGridView1.CurrentRow;
-                int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);
+                int id = Convert.ToInt32(dgvRow.Cells["EvaluationId"].Value);
                 int obt_marks = Convert.ToInt32(dgvRow.Cells["ObtainedMarks"].Value);
                 int g_id = Convert.ToInt32(dgvRow.Cells["GroupId"].Value);
                 DateTime dt = Convert.ToDateTime(dgvRow.Cells["EvaluationDate"].Value == DBNull.Value ? "" : dgvRow.Cells["EvaluationDate"].Value);

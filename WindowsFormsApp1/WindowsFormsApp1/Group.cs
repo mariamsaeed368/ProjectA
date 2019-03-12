@@ -40,15 +40,37 @@ namespace WindowsFormsApp1
             conn.Open();
             SqlCommand comd = new SqlCommand("Select Id from Lookup where Lookup.Value='" + comboBox1.Text + "'", conn);
             int g = (int)comd.ExecuteScalar();
-            SqlCommand cmd1 = new SqlCommand("Insert into GroupStudent(GroupId,StudentId,Status,AssignmentDate) values('" + comboBox2.Text + "','" + textBox1.Text + "','" + g + "','" + dateTimePicker1.Value.ToShortDateString()+ "')", conn);
-            MessageBox.Show("Data saved");
-            cmd1.ExecuteNonQuery();
-            conn.Close();
-            display_data();
-            textBox1.Text = " ";
-            comboBox1.Text = " ";
-            comboBox2.Text = " ";
+            string ColumnName = "StudentId";
+            var SingleRow = (
+                from Rows in dataGridView1.Rows.Cast<DataGridViewRow>()
+                where !Rows.IsNewRow && Rows.Cells[ColumnName].Value.ToString().ToUpper() == textBox1.Text.ToUpper()
+                select Rows).FirstOrDefault();
+            if (SingleRow != null)
+            {
+                MessageBox.Show("This Id is already in use by other group");
+            }
+            else
+            {
+                try
+                {
+                    SqlCommand cmd1 = new SqlCommand("Insert into GroupStudent(GroupId,StudentId,Status,AssignmentDate) values('" + comboBox2.Text + "','" + textBox1.Text + "','" + g + "','" + dateTimePicker1.Value.ToShortDateString() + "')", conn);
+                    cmd1.ExecuteNonQuery();
+                }
+                catch (SqlException Ex)
+                {
+                    if (Ex.Number == 2627)
+                    {
+                        MessageBox.Show("This StudentID is already in use.Please Try another one.");
+                    }
+                }
+                MessageBox.Show("Data saved");
+                conn.Close();
+                display_data();
+                textBox1.Text = " ";
+                comboBox1.Text = " ";
+                comboBox2.Text = " ";
 
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -58,8 +80,9 @@ namespace WindowsFormsApp1
             {
                // conn.Open();
                 DataGridViewRow dgvRow = dataGridView1.CurrentRow;
-                int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);
-                DateTime dt = Convert.ToDateTime(dgvRow.Cells["Created_On"].Value == DBNull.Value ? "" : dgvRow.Cells["Created_On"].Value);
+                int id = Convert.ToInt32(dgvRow.Cells["GroupId"].Value);
+                int id1 = Convert.ToInt32(dgvRow.Cells["StudentId"].Value);
+                DateTime dt = Convert.ToDateTime(dgvRow.Cells["AssignmentDate"].Value == DBNull.Value ? "" : dgvRow.Cells["AssignmentDate"].Value);
                 string role = dgvRow.Cells["Status"].Value == DBNull.Value ? "" : dgvRow.Cells["Status"].Value.ToString();
                 if(role != "3" && role != "4")
                 {
@@ -67,17 +90,24 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                  //try
-                    //{
-                        SqlCommand sqlCmd2 = new SqlCommand("Update [ProjectA].[dbo].[GroupStudent] set AssignmentDate='" + dt + "',Status='" + role + "' where GroupId='" + id + "'", conn);
+                    //try
+                    if (!comboBox2.Items.Contains(id))
+                    {
+                        MessageBox.Show("Please Select the valid number (Hint:Choose the value from ComboBox)");
+                    }
+                    else
+                    {
+                        SqlCommand sqlCmd2 = new SqlCommand("Update [ProjectA].[dbo].[GroupStudent] set AssignmentDate='" + dt + "',Status='" + role + "',GroupId='" + id + "' where StudentId='" + id1 + "'", conn);
                         sqlCmd2.ExecuteNonQuery();
-                    //}
-                    //catch (Exception d)
-                    //{
-                      //  MessageBox.Show("Please Enter the valid Role (Hint : Select 11,12 or 14)");
-                  //  }
-                   // sqlCmd.ExecuteNonQuery();
-                    MessageBox.Show("Updated");
+                        //}
+                        //catch (Exception d)
+                        //{
+                        //  MessageBox.Show("Please Enter the valid Role (Hint : Select 11,12 or 14)");
+                        //  }
+                        // sqlCmd.ExecuteNonQuery();
+                        MessageBox.Show("Updated");
+                    }
+                    
                    // conn.Close();   
                 }
             }
@@ -98,8 +128,9 @@ namespace WindowsFormsApp1
                         sqlCon.Open();
                         SqlCommand cmd2 = new SqlCommand("DeleteByID", sqlCon);
                         cmd2.CommandType = CommandType.Text;
-                        int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
-                        cmd2.CommandText = "Delete from GroupStudent where GroupId='" + rowID + "'";
+                        int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["GroupId"].Value);
+                        int id1 = Convert.ToInt32(dataGridView1.CurrentRow.Cells["StudentId"].Value);
+                        cmd2.CommandText = "Delete from GroupStudent where GroupId='" + rowID + "' AND StudentId='"+id1+"'";
                         cmd2.ExecuteNonQuery();
                         display_data();
                         MessageBox.Show("Deleted");
