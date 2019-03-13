@@ -41,36 +41,47 @@ namespace WindowsFormsApp1
             SqlCommand comd = new SqlCommand("Select Id from Lookup where Lookup.Value='" + comboBox1.Text + "'", conn);
             int g = (int)comd.ExecuteScalar();
             string ColumnName = "StudentId";
-            var SingleRow = (
-                from Rows in dataGridView1.Rows.Cast<DataGridViewRow>()
-                where !Rows.IsNewRow && Rows.Cells[ColumnName].Value.ToString().ToUpper() == textBox1.Text.ToUpper()
-                select Rows).FirstOrDefault();
-            if (SingleRow != null)
+            SqlCommand cmd2 = new SqlCommand("Select Count(StudentId) from [ProjectA].[dbo].[GroupStudent] where GroupId='"+comboBox2.Text+"'", conn);
+            int row = (int)cmd2.ExecuteScalar();
+            if(row < 3)
             {
-                MessageBox.Show("This Id is already in use by other group");
+                var SingleRow = (
+               from Rows in dataGridView1.Rows.Cast<DataGridViewRow>()
+               where !Rows.IsNewRow && Rows.Cells[ColumnName].Value.ToString().ToUpper() == textBox1.Text.ToUpper()
+               select Rows).FirstOrDefault();
+                if (SingleRow != null)
+                {
+                    MessageBox.Show("This Id is already in use by other group");
+                }
+                else
+                {
+                    try
+                    {
+                        SqlCommand cmd1 = new SqlCommand("Insert into GroupStudent(GroupId,StudentId,Status,AssignmentDate) values('" + comboBox2.Text + "','" + textBox1.Text + "','" + g + "','" + dateTimePicker1.Value.ToShortDateString() + "')", conn);
+                        cmd1.ExecuteNonQuery();
+                    }
+                    catch (SqlException Ex)
+                    {
+                        if (Ex.Number == 2627)
+                        {
+                            MessageBox.Show("This StudentID is already in use.Please Try another one.");
+                        }
+                    }
+                    MessageBox.Show("Data saved");
+                    textBox1.Text = " ";
+                    comboBox1.Text = " ";
+                    comboBox2.Text = " ";
+
+                }
+                
             }
             else
             {
-                try
-                {
-                    SqlCommand cmd1 = new SqlCommand("Insert into GroupStudent(GroupId,StudentId,Status,AssignmentDate) values('" + comboBox2.Text + "','" + textBox1.Text + "','" + g + "','" + dateTimePicker1.Value.ToShortDateString() + "')", conn);
-                    cmd1.ExecuteNonQuery();
-                }
-                catch (SqlException Ex)
-                {
-                    if (Ex.Number == 2627)
-                    {
-                        MessageBox.Show("This StudentID is already in use.Please Try another one.");
-                    }
-                }
-                MessageBox.Show("Data saved");
-                conn.Close();
-                display_data();
-                textBox1.Text = " ";
-                comboBox1.Text = " ";
-                comboBox2.Text = " ";
-
+                MessageBox.Show("This Group already have three members.");
             }
+            conn.Close();
+            display_data();
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -132,9 +143,9 @@ namespace WindowsFormsApp1
                         int id1 = Convert.ToInt32(dataGridView1.CurrentRow.Cells["StudentId"].Value);
                         cmd2.CommandText = "Delete from GroupStudent where GroupId='" + rowID + "' AND StudentId='"+id1+"'";
                         cmd2.ExecuteNonQuery();
-                        display_data();
                         MessageBox.Show("Deleted");
                         sqlCon.Close();
+                        display_data();
                     }
                 }
             }
