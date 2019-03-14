@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             }
             catch(Exception h)
             {
-                MessageBox.Show("Please Enter valid date (Hint: d/m/yy");
+                MessageBox.Show("Please Enter valid date (Hint: mm/dd/yyyy");
             } 
             conn.Close();
             display_data();
