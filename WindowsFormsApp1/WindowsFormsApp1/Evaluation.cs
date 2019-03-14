@@ -91,8 +91,12 @@ namespace WindowsFormsApp1
                         sqlCon.Open();
                         SqlCommand cmd = new SqlCommand("DeleteByID", sqlCon);
                         cmd.CommandType = CommandType.Text;
+                        SqlCommand cmd1 = new SqlCommand("DeleteByID", sqlCon);
+                        cmd.CommandType = CommandType.Text;
                         int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
                         cmd.CommandText = "Delete from Evaluation where Id='" + rowID + "'";
+                        cmd1.CommandText="Delete from GroupEvaluation where EvaluationId='"+rowID+"'";
+                        cmd1.ExecuteNonQuery();
                         cmd.ExecuteNonQuery();
                         display_data();
                         MessageBox.Show("Deleted");

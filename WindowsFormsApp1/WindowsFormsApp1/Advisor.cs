@@ -92,9 +92,13 @@ namespace WindowsFormsApp1
                     {
                         sqlCon.Open();
                         SqlCommand cmd = new SqlCommand("EmployeeDeleteByID", sqlCon);
+                        SqlCommand cmd2 = new SqlCommand("EmployeeDeleteByID", sqlCon);
                         cmd.CommandType = CommandType.Text;
                         int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
+                        cmd2.CommandType = CommandType.Text;
                         cmd.CommandText = "Delete from Advisor where Id='" + rowID + "'";
+                        cmd2.CommandText = "Delete from ProjectAdvisor where AdvisorId='" + rowID + "'";
+                        cmd2.ExecuteNonQuery();
                         cmd.ExecuteNonQuery();
                         display_data();
                         MessageBox.Show("Deleted");

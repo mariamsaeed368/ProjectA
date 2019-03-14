@@ -70,8 +70,16 @@ namespace WindowsFormsApp1
                         sqlCon.Open();
                         SqlCommand cmd = new SqlCommand("DeleteByID", sqlCon);
                         cmd.CommandType = CommandType.Text;
+                        SqlCommand cmd2 = new SqlCommand("DeleteByID", sqlCon);
+                        cmd2.CommandType = CommandType.Text;
+                        SqlCommand cmd3 = new SqlCommand("DeleteByID", sqlCon);
+                        cmd2.CommandType = CommandType.Text;
                         int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
                         cmd.CommandText = "Delete from Project where Id='" + rowID + "'";
+                        cmd2.CommandText = "Delete from GroupProject where ProjectId='" + rowID + "'";
+                        cmd2.ExecuteNonQuery();
+                        cmd3.CommandText="Delete from ProjectAdvisor where ProjectId='"+rowID+"'";
+                        cmd3.ExecuteNonQuery();
                         cmd.ExecuteNonQuery();
                         display_data();
                         MessageBox.Show("Deleted");
