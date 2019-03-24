@@ -50,6 +50,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.linkLabel2);
             this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.button4);
@@ -67,19 +70,18 @@
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Location = new System.Drawing.Point(17, 20);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(599, 434);
+            this.groupBox1.Size = new System.Drawing.Size(624, 434);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Project Advisor";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(16, 202);
+            this.linkLabel2.Location = new System.Drawing.Point(46, 202);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(69, 13);
-            this.linkLabel2.TabIndex = 29;
+            this.linkLabel2.TabIndex = 37;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Go to Project";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
@@ -87,60 +89,64 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(94, 202);
+            this.linkLabel1.Location = new System.Drawing.Point(121, 202);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(98, 13);
-            this.linkLabel1.TabIndex = 28;
+            this.linkLabel1.TabIndex = 36;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Go back to Advisor";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(472, 192);
+            this.button4.Location = new System.Drawing.Point(266, 192);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 27;
+            this.button4.TabIndex = 35;
             this.button4.Text = "Update";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(223, 192);
+            this.button3.Location = new System.Drawing.Point(347, 192);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 26;
+            this.button3.TabIndex = 34;
             this.button3.Text = "Display";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(310, 192);
+            this.button2.Location = new System.Drawing.Point(428, 192);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 25;
+            this.button2.TabIndex = 33;
             this.button2.Text = "Delete";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(391, 192);
+            this.button1.Location = new System.Drawing.Point(509, 192);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 24;
+            this.button1.TabIndex = 32;
             this.button1.Text = "Submit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(19, 247);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(554, 181);
+            this.dataGridView1.Size = new System.Drawing.Size(579, 181);
             this.dataGridView1.TabIndex = 8;
             // 
             // textBox1
@@ -148,7 +154,7 @@
             this.textBox1.Location = new System.Drawing.Point(267, 146);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(157, 20);
+            this.textBox1.Size = new System.Drawing.Size(209, 20);
             this.textBox1.TabIndex = 7;
             // 
             // label4
@@ -169,7 +175,7 @@
             "Industry Advisor"});
             this.comboBox2.Location = new System.Drawing.Point(267, 106);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(157, 21);
+            this.comboBox2.Size = new System.Drawing.Size(209, 21);
             this.comboBox2.TabIndex = 5;
             // 
             // label3
@@ -185,7 +191,7 @@
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(267, 71);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(156, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(209, 20);
             this.dateTimePicker1.TabIndex = 3;
             // 
             // label2
@@ -211,7 +217,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(267, 31);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(157, 21);
+            this.comboBox1.Size = new System.Drawing.Size(209, 21);
             this.comboBox1.TabIndex = 0;
             // 
             // ProjectAdvisor
@@ -242,11 +248,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

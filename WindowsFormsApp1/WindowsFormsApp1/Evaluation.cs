@@ -105,8 +105,12 @@ namespace WindowsFormsApp1
                 }
             }
         }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            display_data();
+        }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+            private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow dgvRow = dataGridView1.CurrentRow;
             int id = Convert.ToInt32(dgvRow.Cells["Id"].Value);

@@ -29,27 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.EvaluationViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.EvaluationDataset = new WindowsFormsApp1.EvaluationDataset();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.EvaluationViewTableAdapter = new WindowsFormsApp1.EvaluationDatasetTableAdapters.EvaluationViewTableAdapter();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.EvaluationViewBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EvaluationDataset)).BeginInit();
             this.SuspendLayout();
-            // 
-            // reportViewer1
-            // 
-            reportDataSource3.Name = "EvaluationDataset";
-            reportDataSource3.Value = this.EvaluationViewBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp1.EvaluationReport.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, -1);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1094, 425);
-            this.reportViewer1.TabIndex = 0;
             // 
             // EvaluationViewBindingSource
             // 
@@ -61,12 +49,28 @@
             this.EvaluationDataset.DataSetName = "EvaluationDataset";
             this.EvaluationDataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            reportDataSource2.Name = "EvaluationDataset";
+            reportDataSource2.Value = this.EvaluationViewBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp1.EvaluationReport.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, -1);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(1094, 425);
+            this.reportViewer1.TabIndex = 0;
+            // 
             // EvaluationViewTableAdapter
             // 
             this.EvaluationViewTableAdapter.ClearBeforeFill = true;
             // 
             // linkLabel1
             // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(1016, 441);
             this.linkLabel1.Name = "linkLabel1";

@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

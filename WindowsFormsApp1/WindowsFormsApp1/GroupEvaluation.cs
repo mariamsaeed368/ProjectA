@@ -126,6 +126,5 @@ namespace WindowsFormsApp1
             conn.Close();
             display_data();
         }
-
     }
 }
