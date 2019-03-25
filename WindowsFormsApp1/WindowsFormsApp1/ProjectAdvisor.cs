@@ -28,15 +28,16 @@ namespace WindowsFormsApp1
             conn.Open();
             SqlCommand comd = new SqlCommand("Select Id from Lookup where Lookup.Value='" + comboBox2.Text + "'", conn);
             int g = (int)comd.ExecuteScalar();
+            SqlCommand cmd2 = new SqlCommand("Select Count(AdvisorId) from [ProjectA].[dbo].[ProjectAdvisor] where AdvisorRole='" + g + "' AND ProjectId='"+comboBox1.Text+"'", conn);
+            int row = (int)cmd2.ExecuteScalar();
             SqlCommand cmd = new SqlCommand("Insert into ProjectAdvisor(AdvisorId, ProjectId,AdvisorRole,AssignmentDate) values('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + g + "', '" + dateTimePicker1.Value.ToShortDateString() + "')", conn);
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Data saved");
+             cmd.ExecuteNonQuery();
+             MessageBox.Show("Data saved"); 
+             textBox1.Text = " ";
+             comboBox1.Text = " ";
+             comboBox2.Text = " ";
             conn.Close();
             display_data();
-            textBox1.Text = " ";
-            comboBox1.Text = " ";
-            comboBox2.Text = " ";
-            //dateTimePicker1.Text = " ";
         }
         public void display_data()
         {
@@ -86,8 +87,9 @@ namespace WindowsFormsApp1
                         SqlCommand cmd2 = new SqlCommand("DeleteByID", sqlCon);
                         cmd2.CommandType = CommandType.Text;
                         int rowID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["AdvisorId"].Value);
+                        int rowID1 = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProjectId"].Value);
                         // cmd.CommandText = "Delete from  [ProjectA].[dbo].[Project] where Id='" + rowID + "'";
-                        cmd2.CommandText = "Delete from ProjectAdvisor where AdvisorId='" + rowID + "'";
+                        cmd2.CommandText = "Delete from ProjectAdvisor where AdvisorId='" + rowID + "' AND ProjectId='"+rowID1+"'";
                         cmd2.ExecuteNonQuery();
                         // cmd.ExecuteNonQuery();
                         display_data();
