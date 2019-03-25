@@ -19,9 +19,12 @@ namespace WindowsFormsApp1
 
         private void EvaluationReport_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'DataSet1.View' table. You can move, or remove it, as needed.
+            this.ViewTableAdapter.Fill(this.DataSet1.View);
             // TODO: This line of code loads data into the 'EvaluationDataset.EvaluationView' table. You can move, or remove it, as needed.
             this.EvaluationViewTableAdapter.Fill(this.EvaluationDataset.EvaluationView);
             this.reportViewer1.RefreshReport();
+           
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -293,6 +293,8 @@ namespace WindowsFormsApp1 {
             
             private global::System.Data.DataColumn columnObtainedMarks;
             
+            private global::System.Data.DataColumn columnStudentId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public EvaluationViewDataTable() {
@@ -384,6 +386,14 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn StudentIdColumn {
+                get {
+                    return this.columnStudentId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -419,7 +429,7 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public EvaluationViewRow AddEvaluationViewRow(int Id, string Name, int TotalMarks, int TotalWeightage, System.DateTime EvaluationDate, int GroupId, int ObtainedMarks) {
+            public EvaluationViewRow AddEvaluationViewRow(int Id, string Name, int TotalMarks, int TotalWeightage, System.DateTime EvaluationDate, int GroupId, int ObtainedMarks, int StudentId) {
                 EvaluationViewRow rowEvaluationViewRow = ((EvaluationViewRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -428,7 +438,8 @@ namespace WindowsFormsApp1 {
                         TotalWeightage,
                         EvaluationDate,
                         GroupId,
-                        ObtainedMarks};
+                        ObtainedMarks,
+                        StudentId};
                 rowEvaluationViewRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEvaluationViewRow);
                 return rowEvaluationViewRow;
@@ -458,6 +469,7 @@ namespace WindowsFormsApp1 {
                 this.columnEvaluationDate = base.Columns["EvaluationDate"];
                 this.columnGroupId = base.Columns["GroupId"];
                 this.columnObtainedMarks = base.Columns["ObtainedMarks"];
+                this.columnStudentId = base.Columns["StudentId"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -477,6 +489,8 @@ namespace WindowsFormsApp1 {
                 base.Columns.Add(this.columnGroupId);
                 this.columnObtainedMarks = new global::System.Data.DataColumn("ObtainedMarks", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnObtainedMarks);
+                this.columnStudentId = new global::System.Data.DataColumn("StudentId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStudentId);
                 this.columnId.AllowDBNull = false;
                 this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 200;
@@ -485,6 +499,7 @@ namespace WindowsFormsApp1 {
                 this.columnEvaluationDate.AllowDBNull = false;
                 this.columnGroupId.AllowDBNull = false;
                 this.columnObtainedMarks.AllowDBNull = false;
+                this.columnStudentId.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -701,6 +716,17 @@ namespace WindowsFormsApp1 {
                     this[this.tableEvaluationView.ObtainedMarksColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int StudentId {
+                get {
+                    return ((int)(this[this.tableEvaluationView.StudentIdColumn]));
+                }
+                set {
+                    this[this.tableEvaluationView.StudentIdColumn] = value;
+                }
+            }
         }
         
         /// <summary>
@@ -869,6 +895,7 @@ namespace WindowsFormsApp1.EvaluationDatasetTableAdapters {
             tableMapping.ColumnMappings.Add("EvaluationDate", "EvaluationDate");
             tableMapping.ColumnMappings.Add("GroupId", "GroupId");
             tableMapping.ColumnMappings.Add("ObtainedMarks", "ObtainedMarks");
+            tableMapping.ColumnMappings.Add("StudentId", "StudentId");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -886,7 +913,7 @@ namespace WindowsFormsApp1.EvaluationDatasetTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, Name, TotalMarks, TotalWeightage, EvaluationDate, GroupId, ObtainedMar" +
-                "ks FROM dbo.EvaluationView";
+                "ks, StudentId FROM dbo.EvaluationView";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

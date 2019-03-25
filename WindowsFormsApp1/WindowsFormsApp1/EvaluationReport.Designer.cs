@@ -29,14 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.EvaluationViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.EvaluationDataset = new WindowsFormsApp1.EvaluationDataset();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.EvaluationViewTableAdapter = new WindowsFormsApp1.EvaluationDatasetTableAdapters.EvaluationViewTableAdapter();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.EvaluationViewTableAdapter = new WindowsFormsApp1.EvaluationDatasetTableAdapters.EvaluationViewTableAdapter();
+            this.DataSet1 = new WindowsFormsApp1.DataSet1();
+            this.ViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ViewTableAdapter = new WindowsFormsApp1.DataSet1TableAdapters.ViewTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.EvaluationViewBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EvaluationDataset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ViewBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // EvaluationViewBindingSource
@@ -54,19 +59,15 @@
             this.reportViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            reportDataSource2.Name = "EvaluationDataset";
-            reportDataSource2.Value = this.EvaluationViewBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp1.EvaluationReport.rdlc";
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.EvaluationViewBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp1.Report2.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, -1);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(1094, 425);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // EvaluationViewTableAdapter
-            // 
-            this.EvaluationViewTableAdapter.ClearBeforeFill = true;
             // 
             // linkLabel1
             // 
@@ -80,6 +81,24 @@
             this.linkLabel1.Text = "Go Back";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // EvaluationViewTableAdapter
+            // 
+            this.EvaluationViewTableAdapter.ClearBeforeFill = true;
+            // 
+            // DataSet1
+            // 
+            this.DataSet1.DataSetName = "DataSet1";
+            this.DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // ViewBindingSource
+            // 
+            this.ViewBindingSource.DataMember = "View";
+            this.ViewBindingSource.DataSource = this.DataSet1;
+            // 
+            // ViewTableAdapter
+            // 
+            this.ViewTableAdapter.ClearBeforeFill = true;
+            // 
             // EvaluationReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -92,6 +111,8 @@
             this.Load += new System.EventHandler(this.EvaluationReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.EvaluationViewBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EvaluationDataset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ViewBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,5 +125,8 @@
         private EvaluationDataset EvaluationDataset;
         private EvaluationDatasetTableAdapters.EvaluationViewTableAdapter EvaluationViewTableAdapter;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.BindingSource ViewBindingSource;
+        private DataSet1 DataSet1;
+        private DataSet1TableAdapters.ViewTableAdapter ViewTableAdapter;
     }
 }

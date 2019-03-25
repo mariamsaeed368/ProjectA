@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="ProjectAConnectionString (Settings)" DbObjectName="ProjectA.dbo.EvaluationView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT Id, Name, TotalMarks, TotalWeightage, EvaluationDate, GroupId, ObtainedMarks FROM dbo.EvaluationView</CommandText>
+                    <CommandText>SELECT Id, Name, TotalMarks, TotalWeightage, EvaluationDate, GroupId, ObtainedMarks, StudentId FROM dbo.EvaluationView</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -26,6 +26,7 @@
               <Mapping SourceColumn="EvaluationDate" DataSetColumn="EvaluationDate" />
               <Mapping SourceColumn="GroupId" DataSetColumn="GroupId" />
               <Mapping SourceColumn="ObtainedMarks" DataSetColumn="ObtainedMarks" />
+              <Mapping SourceColumn="StudentId" DataSetColumn="StudentId" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -53,6 +54,7 @@
               <xs:element name="EvaluationDate" msprop:Generator_ColumnVarNameInTable="columnEvaluationDate" msprop:Generator_ColumnPropNameInRow="EvaluationDate" msprop:Generator_ColumnPropNameInTable="EvaluationDateColumn" msprop:Generator_UserColumnName="EvaluationDate" type="xs:dateTime" />
               <xs:element name="GroupId" msprop:Generator_ColumnVarNameInTable="columnGroupId" msprop:Generator_ColumnPropNameInRow="GroupId" msprop:Generator_ColumnPropNameInTable="GroupIdColumn" msprop:Generator_UserColumnName="GroupId" type="xs:int" />
               <xs:element name="ObtainedMarks" msprop:Generator_ColumnVarNameInTable="columnObtainedMarks" msprop:Generator_ColumnPropNameInRow="ObtainedMarks" msprop:Generator_ColumnPropNameInTable="ObtainedMarksColumn" msprop:Generator_UserColumnName="ObtainedMarks" type="xs:int" />
+              <xs:element name="StudentId" msprop:Generator_ColumnVarNameInTable="columnStudentId" msprop:Generator_ColumnPropNameInRow="StudentId" msprop:Generator_ColumnPropNameInTable="StudentIdColumn" msprop:Generator_UserColumnName="StudentId" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
