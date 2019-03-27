@@ -105,6 +105,7 @@ namespace WindowsFormsApp1
             if (dataGridView1.CurrentRow != null)
             {
 
+
                 DataGridViewRow dgvRow = dataGridView1.CurrentRow;
                 int id = Convert.ToInt32(dgvRow.Cells["EvaluationId"].Value);
                 int obt_marks = Convert.ToInt32(dgvRow.Cells["ObtainedMarks"].Value);
