@@ -59,14 +59,26 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             conn.Open();
-            SqlCommand cmd = new SqlCommand("Insert into GroupEvaluation(GroupId,EvaluationId,ObtainedMarks,EvaluationDate) values('" + comboBox1.Text + "','" + textBox1.Text + "','"+textBox2.Text+"','" + dateTimePicker1.Value.ToShortDateString() + "')", conn);
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Data saved");
+            SqlCommand cmd1 = new SqlCommand("Select TotalMarks from [ProjectA].[dbo].[Evaluation] where Id='"+textBox1.Text+"'", conn);
+            int g = (int)cmd1.ExecuteScalar();
+            if(g < Convert.ToInt32(textBox2.Text))
+            {
+                MessageBox.Show("Please Enter Valid Marks");
+
+            }
+            else
+            {
+                SqlCommand cmd = new SqlCommand("Insert into GroupEvaluation(GroupId,EvaluationId,ObtainedMarks,EvaluationDate) values('" + comboBox1.Text + "','" + textBox1.Text + "','" + textBox2.Text + "','" + dateTimePicker1.Value.ToShortDateString() + "')", conn);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Data saved");
+                textBox1.Text = " ";
+                comboBox1.Text = " ";
+                textBox2.Text = " ";
+            }
             conn.Close();
             display_data();
-            textBox1.Text = " ";
-            comboBox1.Text = " ";
-            textBox2.Text = " ";
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)
